@@ -63,6 +63,11 @@ func MatchNumberType(n string) string {
 		}
 		return REAL
 	} else {
-		return NATURAL
+		r, _ = regexp.Compile("[^a-zA-Z]")
+		if r.Match([]byte(n)) {
+			return NATURAL
+		} else {
+			return ILLEGAL
+		}
 	}
 }
